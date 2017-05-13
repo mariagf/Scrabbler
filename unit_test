@@ -1,0 +1,30 @@
+import unittest
+from scrabbler import prefix, suffix, find_words
+class TestUM(unittest.TestCase):
+
+	def test_prefix_aback(self):
+		list = prefix('aback')
+		self.assertEqual(list[0], 'aback')
+
+	def test_prefix_abandon(self):
+		list = prefix('abandon')
+		sol_abandon = ['abandon', 'abandoned', 'abandoning', 'abandonment', 'abandons']
+		self.assertEqual(len(set(list)&set(sol_abandon)), len(list))
+
+	def test_suffix_izzy(self):
+		list = prefix('izzy')
+		sol_izzy = ['dizzy', 'fizzy', 'frizzy', 'tizzy']
+		self.assertEqual(len(set(list)&set(sol_izzy)), len(list))
+
+	def test_find_tiem(self):
+		list = find_words('tiem')
+		sol_tiem = ['item', 'emit', 'mite', 'time']
+		self.assertEqual(len(set(list)&set(sol_tiem)), len(list))
+
+	def test_find_a(self):
+		list = find_words('a')
+		sol_a = []
+		self.assertEqual(len(set(list)&set(sol_a)), len(list))
+
+if __name__ == '__main__':
+	unittest.main()
